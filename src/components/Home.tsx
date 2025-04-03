@@ -65,10 +65,10 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-wrap gap-4 pt-3"
           >
-            <a href="#projects" className="bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 transform hover:scale-110 ease-in-out">
+            <a href="#projects" className="bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 transform hover:scale-110 ease-in-out hover:text-white dark:hover:text-black">
               View My Work
             </a>
-            <a href="#contact" className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-110 ease-in-out">
+            <a href="#contact" className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-110 ease-in-out hover:text-white">
               Get In Touch
             </a>
           </motion.div>
@@ -79,13 +79,20 @@ const Home = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto">
-            <img
+          <motion.div 
+            className="w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto overflow-hidden rounded-full shadow-xl"
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.img
               src={data.personalInfo.profileImage}
               alt="Profile"
-              className="w-full h-full rounded-full object-cover"
+              className="w-full h-full object-cover"
+              style={{ transform: 'scale(1.3)' }}
+              whileHover={{ scale: 1.5 }}
+              transition={{ duration: 0.5 }}
             />
-          </div>
+          </motion.div>
         </motion.div>
       </section>
 

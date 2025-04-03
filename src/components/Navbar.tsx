@@ -90,10 +90,13 @@ const Navbar = () => {
             <div className="hidden md:flex items-center space-x-4">
               <button 
                 onClick={toggleDarkMode}
-                className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300 transform hover:scale-110"
+                className="transition-all duration-300 transform hover:scale-110"
                 aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               >
-                {isDarkMode ? <FaSun className="w-6 h-6" /> : <FaMoon className="w-6 h-6" />}
+                {isDarkMode ? 
+                  <FaSun className="w-6 h-6 text-black" /> : 
+                  <FaMoon className="w-6 h-6 text-white" />
+                }
               </button>
               <a
                 href={data.socialLinks.github.url}
@@ -113,7 +116,7 @@ const Navbar = () => {
               </a>
               <a
                 href="#contact"
-                className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 no-underline"
+                className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 no-underline hover:text-white dark:hover:text-black"
               >
                 Contact Me
               </a>
@@ -123,30 +126,40 @@ const Navbar = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors focus:outline-none"
+                className="focus:outline-none"
                 aria-label="Menu"
               >
-                <svg
-                  className="h-6 w-6 text-black dark:text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  {isOpen ? (
+                {isOpen ? (
+                  <svg
+                    className="h-7 w-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
                       d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <path
+                      stroke={isDarkMode ? "white" : "black"}
+                      strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
                     />
-                  )}
-                </svg>
+                  </svg>
+                ) : (
+                  <svg
+                    className="h-7 w-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 6h16M4 12h16M4 18h16"
+                      stroke={isDarkMode ? "white" : "black"}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
               </button>
             </div>
           </div>
@@ -184,10 +197,13 @@ const Navbar = () => {
             <div className="flex space-x-6 pt-6 border-t border-gray-200 dark:border-gray-700">
               <button 
                 onClick={toggleDarkMode}
-                className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300"
+                className="transition-all duration-300 transform hover:scale-110"
                 aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               >
-                {isDarkMode ? <FaSun className="w-6 h-6" /> : <FaMoon className="w-6 h-6" />}
+                {isDarkMode ? 
+                  <FaSun className="w-6 h-6 text-black" /> : 
+                  <FaMoon className="w-6 h-6 text-white" />
+                }
               </button>
               <a
                 href={data.socialLinks.github.url}
