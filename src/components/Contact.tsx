@@ -25,7 +25,7 @@ const Contact = ({ title, formFields }: ContactProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8"
+            className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg p-8"
           >
             <form className="space-y-6">
               {formFields.map((field) => (
@@ -39,7 +39,7 @@ const Contact = ({ title, formFields }: ContactProps) => {
                       name={field.name}
                       rows={4}
                       required={field.required}
-                      className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-black dark:focus:border-white focus:ring-black dark:focus:ring-white dark:bg-gray-700 dark:text-white"
+                      className="mt-1 py-3 px-4 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-black dark:focus:border-white focus:ring-black dark:focus:ring-white bg-gray-50 dark:bg-gray-700 text-black dark:text-white"
                     />
                   ) : (
                     <input
@@ -47,7 +47,7 @@ const Contact = ({ title, formFields }: ContactProps) => {
                       id={field.name}
                       name={field.name}
                       required={field.required}
-                      className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-black dark:focus:border-white focus:ring-black dark:focus:ring-white dark:bg-gray-700 dark:text-white"
+                      className="mt-1 py-3 px-4 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-black dark:focus:border-white focus:ring-black dark:focus:ring-white bg-gray-50 dark:bg-gray-700 text-black dark:text-white"
                     />
                   )}
                 </div>
