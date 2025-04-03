@@ -8,8 +8,8 @@ interface ContactProps {
 
 const Contact = ({ title, formFields }: ContactProps) => {
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-[#121212] transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="w-full py-20 bg-gray-50 dark:bg-[#121212] transition-colors">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

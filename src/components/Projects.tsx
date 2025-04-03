@@ -105,8 +105,8 @@ interface ProjectsProps {
 
 const Projects = ({ title, projects }: ProjectsProps) => {
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="w-full py-20 bg-gray-50 dark:bg-gray-900 transition-colors">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
