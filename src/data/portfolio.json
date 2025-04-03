@@ -1,0 +1,418 @@
+{
+  "personalInfo": {
+    "name": "Sidhartha Sunkasari",
+    "title": "Software Engineer",
+    "tagline": "Software Developer specializing in building exceptional digital experiences.",
+    "email": "sidharthasunkasari96@gmail.com",
+    "profileImage": "/src/images/profile.jpeg"
+  },
+  "socialLinks": {
+    "github": {
+      "url": "https://github.com/sidhu47h",
+      "username": "sidhu47h"
+    },
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/sidhu47h/",
+      "username": "sidhu47h"
+    },
+    "twitter": {
+      "url": "https://twitter.com/yourusername",
+      "username": "@yourusername"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a passionate software developer with expertise in building modern web applications. With over 5 years of experience, I've worked on a variety of projects ranging from small business websites to large enterprise applications.",
+    "details": {
+      "experience": [
+        {
+          "position": "Senior Software Developer",
+          "company": "Tech Company",
+          "period": "2020-Present"
+        },
+        {
+          "position": "Software Developer",
+          "company": "Previous Company",
+          "period": "2018-2020"
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Computer Science",
+          "institution": "University Name",
+          "year": "2018"
+        }
+      ]
+    }
+  },
+  "skills": {
+    "title": "My Skills",
+    "categories": [
+      {
+        "name": "Languages",
+        "skills": [
+          {
+            "name": "Go",
+            "icon": "SiGo"
+          },
+          {
+            "name": "Java",
+            "icon": "FaJava"
+          },
+          {
+            "name": "Python",
+            "icon": "SiPython"
+          },
+          {
+            "name": "JavaScript",
+            "icon": "SiJavascript"
+          },
+          {
+            "name": "TypeScript",
+            "icon": "SiTypescript"
+          },
+          {
+            "name": "Scala",
+            "icon": "SiScala"
+          },
+          {
+            "name": "C",
+            "icon": "SiC"
+          },
+          {
+            "name": "C++",
+            "icon": "SiCplusplus"
+          }
+        ]
+      },
+      {
+        "name": "Frontend",
+        "skills": [
+          {
+            "name": "HTML5",
+            "icon": "FaHtml5"
+          },
+          {
+            "name": "CSS3",
+            "icon": "FaCss3Alt"
+          },
+          {
+            "name": "Tailwind CSS",
+            "icon": "SiTailwindcss"
+          },
+          {
+            "name": "Bootstrap",
+            "icon": "SiBootstrap"
+          },
+          {
+            "name": "React",
+            "icon": "FaReact"
+          },
+          {
+            "name": "Observable",
+            "icon": "SiObservable"
+          },
+          {
+            "name": "D3.js",
+            "icon": "SiD3Dotjs"
+          }
+        ]
+      },
+      {
+        "name": "Backend",
+        "skills": [
+          {
+            "name": "Spring Boot",
+            "icon": "SiSpring"
+          },
+          {
+            "name": "Flask",
+            "icon": "SiFlask"
+          },
+          {
+            "name": "Express.js",
+            "icon": "SiExpress"
+          },
+          {
+            "name": "Hibernate",
+            "icon": "SiHibernate"
+          },
+          {
+            "name": "JPA",
+            "icon": "SiJpa"
+          }
+        ]
+      },
+      {
+        "name": "Testing",
+        "skills": [
+          {
+            "name": "JUnit",
+            "icon": "SiJunit5"
+          },
+          {
+            "name": "Mockito",
+            "icon": "SiTestinglibrary"
+          },
+          {
+            "name": "Postman",
+            "icon": "SiPostman"
+          }
+        ]
+      },
+      {
+        "name": "DevOps",
+        "skills": [
+          {
+            "name": "Docker",
+            "icon": "FaDocker"
+          },
+          {
+            "name": "GitLab CI/CD",
+            "icon": "SiGitlab"
+          },
+          {
+            "name": "Jenkins",
+            "icon": "SiJenkins"
+          },
+          {
+            "name": "Git",
+            "icon": "FaGitAlt"
+          }
+        ]
+      },
+      {
+        "name": "Databases",
+        "skills": [
+          {
+            "name": "MySQL",
+            "icon": "SiMysql"
+          },
+          {
+            "name": "PostgreSQL",
+            "icon": "SiPostgresql"
+          },
+          {
+            "name": "MongoDB",
+            "icon": "SiMongodb"
+          },
+          {
+            "name": "Firestore",
+            "icon": "SiFirebase"
+          }
+        ]
+      },
+      {
+        "name": "Cloud (AWS)",
+        "skills": [
+          {
+            "name": "AWS",
+            "icon": "FaAws"
+          },
+          {
+            "name": "EC2",
+            "icon": "SiAmazonec2"
+          },
+          {
+            "name": "S3",
+            "icon": "SiAmazons3"
+          },
+          {
+            "name": "DynamoDB",
+            "icon": "SiAmazondynamodb"
+          },
+          {
+            "name": "CloudWatch",
+            "icon": "SiAmazoncloudwatch"
+          },
+          {
+            "name": "Route 53",
+            "icon": "SiAmazonroute53"
+          }
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "list": [
+      {
+        "title": "Portfolio Website",
+        "description": "A modern, responsive portfolio website built with React and Tailwind CSS.",
+        "image": "/images/portfolio.jpg",
+        "technologies": ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        "links": {
+          "github": "https://github.com/yourusername/portfolio",
+          "live": "https://yourportfolio.com"
+        }
+      },
+      {
+        "title": "E-commerce Platform",
+        "description": "A full-stack e-commerce platform with user authentication and payment processing.",
+        "image": "/images/ecommerce.jpg",
+        "technologies": ["Node.js", "Express", "MongoDB", "React", "Redux"],
+        "links": {
+          "github": "https://github.com/yourusername/ecommerce",
+          "live": "https://ecommerce-demo.com"
+        }
+      },
+      {
+        "title": "Task Management App",
+        "description": "A collaborative task management application with real-time updates.",
+        "image": "/images/task-manager.jpg",
+        "technologies": ["React", "Firebase", "Material UI", "Redux"],
+        "links": {
+          "github": "https://github.com/yourusername/task-manager",
+          "live": "https://task-manager-demo.com"
+        }
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "I'd love to hear from you! Whether you have a question or just want to say hi, feel free to reach out.",
+    "formFields": [
+      {
+        "name": "name",
+        "label": "Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "email",
+        "label": "Email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "name": "message",
+        "label": "Message",
+        "type": "textarea",
+        "required": true
+      }
+    ]
+  },
+  "navigation": {
+    "links": [
+      {
+        "name": "About",
+        "href": "#about"
+      },
+      {
+        "name": "Experience",
+        "href": "#experience"
+      },
+      {
+        "name": "Education",
+        "href": "#education"
+      },
+      {
+        "name": "Skills",
+        "href": "#skills"
+      },
+      {
+        "name": "Projects",
+        "href": "#projects"
+      }
+    ]
+  },
+  "experience": {
+    "title": "Work Experience",
+    "positions": [
+      {
+        "company": "Company Name 1",
+        "role": "Senior Software Developer",
+        "period": "Jan 2022 - Present",
+        "location": "City, Country",
+        "responsibilities": [
+          "Led a team of 5 developers in developing and maintaining multiple web applications",
+          "Implemented microservices architecture resulting in 40% improved system performance",
+          "Mentored junior developers and conducted code reviews to ensure code quality",
+          "Collaborated with product managers to define technical requirements and project timelines"
+        ],
+        "techStack": ["React", "Node.js", "TypeScript", "AWS", "Docker", "MongoDB"]
+      },
+      {
+        "company": "Company Name 2",
+        "role": "Software Developer",
+        "period": "Jun 2020 - Dec 2021",
+        "location": "City, Country",
+        "responsibilities": [
+          "Developed and maintained frontend applications using React and TypeScript",
+          "Implemented responsive designs and ensured cross-browser compatibility",
+          "Integrated third-party APIs and services into existing applications",
+          "Participated in agile ceremonies and contributed to sprint planning"
+        ],
+        "techStack": ["React", "JavaScript", "HTML/CSS", "Git", "REST APIs"]
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "degrees": [
+      {
+        "degree": "Master of Science in Computer Science",
+        "institution": "University Name",
+        "location": "City, Country",
+        "period": "2018 - 2020",
+        "gpa": "3.8/4.0",
+        "highlights": [
+          "Specialized in Machine Learning and Artificial Intelligence",
+          "Published research paper on Deep Learning applications",
+          "Teaching Assistant for Data Structures and Algorithms",
+          "Member of Computer Science Honor Society"
+        ],
+        "relevantCourses": [
+          "Advanced Algorithms",
+          "Machine Learning",
+          "Distributed Systems",
+          "Cloud Computing",
+          "Software Engineering"
+        ]
+      },
+      {
+        "degree": "Bachelor of Technology in Computer Science",
+        "institution": "University Name",
+        "location": "City, Country",
+        "period": "2014 - 2018",
+        "gpa": "3.9/4.0",
+        "highlights": [
+          "Graduated with First Class Honors",
+          "Led the University Coding Club",
+          "Won first place in National Coding Competition",
+          "Completed capstone project on Web Technologies"
+        ],
+        "relevantCourses": [
+          "Data Structures",
+          "Object-Oriented Programming",
+          "Database Management",
+          "Web Development",
+          "Computer Networks"
+        ]
+      }
+    ]
+  },
+  "awards": {
+    "title": "Awards & Achievements",
+    "list": [
+      {
+        "title": "Outstanding Technical Innovation Award",
+        "organization": "Tech Conference 2023",
+        "date": "November 2023",
+        "description": "Recognized for developing an innovative AI-powered solution that improved system efficiency by 60%."
+      },
+      {
+        "title": "Best Open Source Contribution",
+        "organization": "GitHub Community Awards",
+        "date": "June 2023",
+        "description": "Awarded for significant contributions to open-source projects and active participation in the developer community."
+      },
+      {
+        "title": "Excellence in Leadership",
+        "organization": "Company Name",
+        "date": "December 2022",
+        "description": "Recognized for exceptional leadership in driving team success and mentoring junior developers."
+      }
+    ]
+  }
+} 
