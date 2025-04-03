@@ -1,4 +1,5 @@
 export interface PersonalInfo {
+  logoName: string;
   name: string;
   title: string;
   tagline: string;

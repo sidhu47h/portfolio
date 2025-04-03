@@ -41,7 +41,7 @@ const Home = () => {
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-5"
           >
             <span className="text-black dark:text-white">Hi, I'm </span>
-            <span className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-transparent bg-clip-text break-words">{data.personalInfo.name}</span>
+            <span className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-transparent bg-clip-text whitespace-nowrap">{data.personalInfo.name}</span>
           </motion.h1>
           <div className="relative">
             <div className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 md:mb-8 pr-4" style={{ lineHeight: '1.5' }}>

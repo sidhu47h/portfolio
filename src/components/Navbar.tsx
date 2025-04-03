@@ -69,7 +69,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <a href="/" className="text-2xl md:text-3xl font-bold text-black dark:text-white no-underline tracking-tight">
-                {data.personalInfo.name}
+                {data.personalInfo.logoName}
               </a>
             </div>
 
