@@ -12,33 +12,33 @@ const ExperienceCard = ({ position, index }: ExperienceCardProps) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay: index * 0.2 }}
     viewport={{ once: true }}
-    className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
+    className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
   >
     <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
       <div>
-        <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">{position.company}</h3>
-        <p className="text-lg text-black dark:text-white mt-1">{position.role}</p>
+        <h3 className="text-2xl font-bold text-blue-600">{position.company}</h3>
+        <p className="text-lg text-black mt-1">{position.role}</p>
       </div>
       <div className="text-right mt-2 md:mt-0">
-        <p className="text-gray-600 dark:text-gray-300">{position.period}</p>
-        <p className="text-gray-600 dark:text-gray-300">{position.location}</p>
+        <p className="text-gray-600">{position.period}</p>
+        <p className="text-gray-600">{position.location}</p>
       </div>
     </div>
     <div className="mb-4">
-      <h4 className="text-lg font-semibold text-black dark:text-white mb-2">Responsibilities:</h4>
-      <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300">
+      <h4 className="text-lg font-semibold text-black mb-2">Responsibilities:</h4>
+      <ul className="list-disc list-inside space-y-1 text-gray-600">
         {position.responsibilities.map((responsibility, idx) => (
           <li key={idx}>{responsibility}</li>
         ))}
       </ul>
     </div>
     <div>
-      <h4 className="text-lg font-semibold text-black dark:text-white mb-2">Tech Stack:</h4>
+      <h4 className="text-lg font-semibold text-black mb-2">Tech Stack:</h4>
       <div className="flex flex-wrap gap-2">
         {position.techStack.map((tech, idx) => (
           <span
             key={idx}
-            className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
+            className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
           >
             {tech}
           </span>
