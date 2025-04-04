@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import type { Project, Projects as ProjectsType } from '../types/portfolio';
+import type { Project } from '../types/portfolio';
 import { AiOutlineLink } from 'react-icons/ai';
 import { FaGithub } from 'react-icons/fa';
 

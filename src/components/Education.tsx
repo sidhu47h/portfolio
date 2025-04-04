@@ -59,39 +59,13 @@ const Education = ({ title, degrees }: EducationProps) => {
         >
           {title}
         </motion.h2>
-        <div className="grid gap-6 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
-          {degrees.map((degree) => (
-            <motion.div
+        <div className="space-y-6">
+          {degrees.map((degree, index) => (
+            <EducationCard 
               key={degree.institution}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <div className="mb-4">
-                <h3 className="text-2xl font-bold text-blue-600">{degree.institution}</h3>
-                <p className="text-lg text-black mt-1">{degree.degree}</p>
-              </div>
-              <div className="mb-4">
-                <p className="text-gray-600">{degree.period}</p>
-                <p className="text-gray-600">{degree.location}</p>
-                {degree.gpa && <p className="text-gray-600">GPA: {degree.gpa}</p>}
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-black mb-2">Relevant Courses:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {degree.relevantCourses.map((course) => (
-                    <span 
-                      key={course}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
-                    >
-                      {course}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              degree={degree}
+              index={index}
+            />
           ))}
         </div>
       </div>
