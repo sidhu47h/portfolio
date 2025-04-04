@@ -10,11 +10,6 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      # Using consistent VITE_EMAILJS_ prefix
-      VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
-      VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
-      VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,32 +24,28 @@ jobs:
         
       - name: Debug GitHub Secrets (Safely)
         run: |
-          echo "VITE_EMAILJS_SERVICE_ID defined in secrets? $([ -n \"${{ secrets.VITE_EMAILJS_SERVICE_ID }}\" ] && echo 'Yes' || echo 'No')"
-          echo "VITE_EMAILJS_TEMPLATE_ID defined in secrets? $([ -n \"${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}\" ] && echo 'Yes' || echo 'No')"
-          echo "VITE_EMAILJS_PUBLIC_KEY defined in secrets? $([ -n \"${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}\" ] && echo 'Yes' || echo 'No')"
-          echo "Job env variables available? $([ -n \"$VITE_EMAILJS_SERVICE_ID\" ] && [ -n \"$VITE_EMAILJS_TEMPLATE_ID\" ] && [ -n \"$VITE_EMAILJS_PUBLIC_KEY\" ] && echo 'Yes' || echo 'No')"
-        
-      - name: Create env file
-        run: |
-          echo "VITE_EMAILJS_SERVICE_ID='$VITE_EMAILJS_SERVICE_ID'" > .env
-          echo "VITE_EMAILJS_TEMPLATE_ID='$VITE_EMAILJS_TEMPLATE_ID'" >> .env
-          echo "VITE_EMAILJS_PUBLIC_KEY='$VITE_EMAILJS_PUBLIC_KEY'" >> .env
+          echo "VITE_EMAILJS_SERVICE_ID defined in secrets? $([ -n "${{ secrets.VITE_EMAILJS_SERVICE_ID }}" ] && echo 'Yes' || echo 'No')"
+          echo "VITE_EMAILJS_TEMPLATE_ID defined in secrets? $([ -n "${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}" ] && echo 'Yes' || echo 'No')"
+          echo "VITE_EMAILJS_PUBLIC_KEY defined in secrets? $([ -n "${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}" ] && echo 'Yes' || echo 'No')"
       
-      - name: Debug Environment File
+      # Create a .env file for the build process
+      - name: Create .env file
         run: |
-          echo "Content of .env file (with secrets redacted):"
-          cat .env | sed "s/'.*'/'REDACTED'/g"
-          echo "Env file has non-empty values? $(grep -v \"=''\" .env | wc -l)"
+          cat > .env << EOL
+          VITE_EMAILJS_SERVICE_ID=${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID=${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+          VITE_EMAILJS_PUBLIC_KEY=${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
+          EOL
+          
+      - name: Verify .env file (safely)
+        run: |
+          echo "Number of env variables defined: $(grep -c VITE_ .env)"
       
       - name: Build
         run: npm run build
-        env:
-          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
-          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
-          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
-          branch: gh-pages 
+          branch: gh-pages
