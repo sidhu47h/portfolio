@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { useState, useRef, FormEvent } from 'react';
+import emailjs from '@emailjs/browser';
 import type { Contact } from '../types/portfolio';
 
 interface ContactProps {
@@ -7,6 +9,49 @@ interface ContactProps {
 }
 
 const Contact = ({ title, formFields }: ContactProps) => {
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success: boolean;
+    message: string;
+  } | null>(null);
+
+  const sendEmail = (e: FormEvent) => {
+    e.preventDefault();
+    
+    if (!form.current) return;
+    
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    // Replace these with your actual EmailJS service ID, template ID, and public key
+    // You'll get these when you sign up at https://www.emailjs.com/
+    emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID as string,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string,
+      form.current,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
+    )
+      .then((result) => {
+        console.log('Email sent successfully:', result.text);
+        setSubmitStatus({
+          success: true,
+          message: 'Message sent successfully! I will get back to you soon.'
+        });
+        form.current?.reset();
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error.text);
+        setSubmitStatus({
+          success: false,
+          message: 'Failed to send message. Please try again or contact me directly.'
+        });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  };
+
   return (
     <section id="contact" className="w-full py-20 bg-gray-50 dark:bg-[#121212] transition-colors">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
@@ -27,7 +72,19 @@ const Contact = ({ title, formFields }: ContactProps) => {
             viewport={{ once: true }}
             className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg p-8"
           >
-            <form className="space-y-6">
+            {submitStatus && (
+              <div 
+                className={`mb-6 p-4 rounded-md ${
+                  submitStatus.success 
+                    ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100' 
+                    : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100'
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
               {formFields.map((field) => (
                 <div key={field.name}>
                   <label htmlFor={field.name} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -54,9 +111,14 @@ const Contact = ({ title, formFields }: ContactProps) => {
               ))}
               <button
                 type="submit"
-                className="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 ease-in-out"
+                disabled={isSubmitting}
+                className={`w-full bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 ease-in-out ${
+                  isSubmitting 
+                    ? 'opacity-70 cursor-not-allowed' 
+                    : 'hover:bg-gray-800 dark:hover:bg-gray-200'
+                }`}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </motion.div>

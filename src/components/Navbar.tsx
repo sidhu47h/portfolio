@@ -96,15 +96,7 @@ const Navbar = () => {
 
             {/* Right side icons */}
             <div className="hidden md:flex items-center space-x-4">
-              <button
-                onClick={handleDownloadResume}
-                className="transition-all duration-300 transform hover:scale-110 flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
-                aria-label="Download Resume"
-              >
-                <FaDownload className="w-4 h-4" />
-                <span>Resume</span>
-              </button>
-              <a
+            <a
                 href={data.socialLinks.github.url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -120,6 +112,14 @@ const Navbar = () => {
               >
                 <FaLinkedin className="w-6 h-6" />
               </a>
+              <button
+                onClick={handleDownloadResume}
+                className="transition-all duration-300 transform hover:scale-110 flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+                aria-label="Download Resume"
+              >
+                <FaDownload className="w-4 h-4" />
+                <span>Resume</span>
+              </button>
               <a
                 href="#contact"
                 className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 no-underline hover:text-white dark:hover:text-black"
