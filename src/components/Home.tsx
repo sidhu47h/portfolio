@@ -129,7 +129,11 @@ const Home = () => {
 
       {/* Contact Section */}
       <div className="mt-12 md:mt-4 mb-20">
-        <Contact title={data.contact.title} formFields={data.contact.formFields} />
+        <Contact 
+          title={data.contact.title} 
+          formFields={data.contact.formFields} 
+          email={data.personalInfo.email}
+        />
       </div>
     </div>
   );

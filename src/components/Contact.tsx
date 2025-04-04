@@ -7,9 +7,10 @@ import { emailJsConfig, isEmailJsConfigured } from '../config';
 interface ContactProps {
   title: string;
   formFields: Contact['formFields'];
+  email?: string;
 }
 
-const Contact = ({ title, formFields }: ContactProps) => {
+const Contact = ({ title, formFields, email = 'contact@example.com' }: ContactProps) => {
   const form = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
@@ -23,8 +24,12 @@ const Contact = ({ title, formFields }: ContactProps) => {
     const configured = isEmailJsConfigured();
     setIsConfigured(configured);
     
-    // Debug: Log if configuration is available (without revealing values)
+    // Log configuration status without exposing values
     console.log('EmailJS configured:', configured);
+    
+    if (!configured) {
+      console.warn('EmailJS configuration is missing. Contact form functionality will be limited.');
+    }
     
     // Ensure EmailJS is initialized only once when the component mounts
     try {
@@ -116,7 +121,8 @@ const Contact = ({ title, formFields }: ContactProps) => {
           >
             {!isConfigured && (
               <div className="mb-6 p-4 rounded-md bg-yellow-100 text-yellow-800">
-                Contact form is currently unavailable. Please reach out via email directly.
+                <p className="font-medium">Contact form is currently unavailable.</p>
+                <p className="mt-1">Please reach out via email directly at: <a href={`mailto:${email}`} className="underline">{email}</a></p>
               </div>
             )}
             

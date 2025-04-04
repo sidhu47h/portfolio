@@ -24,25 +24,31 @@ jobs:
         
       - name: Debug GitHub Secrets (Safely)
         run: |
-          echo "VITE_EMAILJS_SERVICE_ID defined in secrets? $([ -n "${{ secrets.VITE_EMAILJS_SERVICE_ID }}" ] && echo 'Yes' || echo 'No')"
-          echo "VITE_EMAILJS_TEMPLATE_ID defined in secrets? $([ -n "${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}" ] && echo 'Yes' || echo 'No')"
-          echo "VITE_EMAILJS_PUBLIC_KEY defined in secrets? $([ -n "${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}" ] && echo 'Yes' || echo 'No')"
+          echo "VITE_EMAILJS_SERVICE_ID defined? $([ -n "${{ secrets.VITE_EMAILJS_SERVICE_ID }}" ] && echo 'Yes' || echo 'No')"
+          echo "VITE_EMAILJS_TEMPLATE_ID defined? $([ -n "${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}" ] && echo 'Yes' || echo 'No')"
+          echo "VITE_EMAILJS_PUBLIC_KEY defined? $([ -n "${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}" ] && echo 'Yes' || echo 'No')"
       
-      # Create a .env file for the build process
+      # Create a .env file with explicitly quoted values to handle special characters
       - name: Create .env file
         run: |
           cat > .env << EOL
-          VITE_EMAILJS_SERVICE_ID=${{ secrets.VITE_EMAILJS_SERVICE_ID }}
-          VITE_EMAILJS_TEMPLATE_ID=${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
-          VITE_EMAILJS_PUBLIC_KEY=${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
+          VITE_EMAILJS_SERVICE_ID="${{ secrets.VITE_EMAILJS_SERVICE_ID }}"
+          VITE_EMAILJS_TEMPLATE_ID="${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}"
+          VITE_EMAILJS_PUBLIC_KEY="${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}"
           EOL
           
-      - name: Verify .env file (safely)
+      - name: Verify .env file creation
         run: |
           echo "Number of env variables defined: $(grep -c VITE_ .env)"
+          echo "Environment variables are properly set: $([ -s .env ] && echo 'Yes' || echo 'No')"
       
+      # Build with environment variables directly passed to ensure they're available
       - name: Build
         run: npm run build
+        env:
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
