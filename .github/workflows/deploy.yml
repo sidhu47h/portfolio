@@ -21,10 +21,24 @@ jobs:
           
       - name: Install dependencies
         run: npm ci
+        
+      - name: Debug Files
+        run: |
+          echo "Checking key files exist:"
+          ls -la src/
+          echo "Checking config.ts:"
+          cat src/config.ts | grep -v publicKey
       
-      # Simple build with no environment variables needed
+      # Build with verbose output
       - name: Build
-        run: npm run build
+        run: npm run build -- --debug
+        
+      - name: Verify Build Output
+        run: |
+          echo "Build output files:"
+          ls -la dist/
+          echo "Checking for key assets:"
+          find dist -type f -name "*.js" | xargs grep -l "service_" || echo "No matches found"
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

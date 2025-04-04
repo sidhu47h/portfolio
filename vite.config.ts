@@ -6,5 +6,10 @@ export default defineConfig({
   base: '/portfolio/',
   plugins: [react()],
   assetsInclude: ['**/*.pdf'],
-  // Vite automatically handles .env variables with VITE_ prefix
+  build: {
+    // Make source code more readable in production for debugging
+    minify: false,
+    // Ensure inlined constants are preserved
+    sourcemap: true,
+  }
 })

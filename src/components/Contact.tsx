@@ -21,6 +21,15 @@ const Contact = ({ title, formFields, email = 'contact@example.com' }: ContactPr
 
   // Initialize EmailJS
   useEffect(() => {
+    console.log('Contact component mounted, initializing EmailJS');
+    
+    // Log the actual config values (without exposing them fully)
+    console.log('EmailJS config being used:', {
+      serviceIdFirstChar: emailJsConfig.serviceId?.charAt(0) || 'missing',
+      templateIdFirstChar: emailJsConfig.templateId?.charAt(0) || 'missing',
+      publicKeyFirstChar: emailJsConfig.publicKey?.charAt(0) || 'missing'
+    });
+    
     const configured = isEmailJsConfigured();
     setIsConfigured(configured);
     
@@ -35,7 +44,7 @@ const Contact = ({ title, formFields, email = 'contact@example.com' }: ContactPr
     try {
       if (emailJsConfig.publicKey) {
         emailjs.init(emailJsConfig.publicKey);
-        console.log('EmailJS initialized successfully');
+        console.log('EmailJS initialized successfully with public key');
       } else {
         console.warn('EmailJS public key is not defined');
       }
