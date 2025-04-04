@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useState, useRef, FormEvent, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import type { Contact } from '../types/portfolio';
+import { emailJsConfig, isEmailJsConfigured } from '../config';
 
 interface ContactProps {
   title: string;
@@ -15,24 +16,23 @@ const Contact = ({ title, formFields }: ContactProps) => {
     success: boolean;
     message: string;
   } | null>(null);
+  const [isConfigured, setIsConfigured] = useState(false);
 
   // Initialize EmailJS
   useEffect(() => {
-    // Debug: Log if environment variables are defined (without revealing their values)
-    console.log('EmailJS env vars defined?', {
-      serviceId: !!import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      templateId: !!import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      publicKey: !!import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    });
+    const configured = isEmailJsConfigured();
+    setIsConfigured(configured);
+    
+    // Debug: Log if configuration is available (without revealing values)
+    console.log('EmailJS configured:', configured);
     
     // Ensure EmailJS is initialized only once when the component mounts
     try {
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-      if (publicKey) {
-        emailjs.init(publicKey);
+      if (emailJsConfig.publicKey) {
+        emailjs.init(emailJsConfig.publicKey);
         console.log('EmailJS initialized successfully');
       } else {
-        console.warn('EmailJS public key is not defined in environment variables');
+        console.warn('EmailJS public key is not defined');
       }
     } catch (error) {
       console.error('Failed to initialize EmailJS:', error);
@@ -47,13 +47,9 @@ const Contact = ({ title, formFields }: ContactProps) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Check if environment variables are defined
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      console.error('EmailJS configuration is missing. Please check your environment variables.');
+    // Check if EmailJS is configured
+    if (!isConfigured) {
+      console.error('EmailJS is not configured. Please check your environment variables.');
       setSubmitStatus({
         success: false,
         message: 'Email service is not properly configured. Please contact me directly via email.'
@@ -65,10 +61,10 @@ const Contact = ({ title, formFields }: ContactProps) => {
     // Safely attempt to send the email
     try {
       emailjs.sendForm(
-        serviceId,
-        templateId,
+        emailJsConfig.serviceId,
+        emailJsConfig.templateId,
         form.current,
-        publicKey
+        emailJsConfig.publicKey
       )
         .then((result) => {
           console.log('Email sent successfully:', result.text);
@@ -118,6 +114,12 @@ const Contact = ({ title, formFields }: ContactProps) => {
             viewport={{ once: true }}
             className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg p-8"
           >
+            {!isConfigured && (
+              <div className="mb-6 p-4 rounded-md bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100">
+                Contact form is currently unavailable. Please reach out via email directly.
+              </div>
+            )}
+            
             {submitStatus && (
               <div 
                 className={`mb-6 p-4 rounded-md ${
@@ -143,6 +145,7 @@ const Contact = ({ title, formFields }: ContactProps) => {
                       rows={4}
                       required={field.required}
                       className="mt-1 py-3 px-4 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-black dark:focus:border-white focus:ring-black dark:focus:ring-white bg-gray-50 dark:bg-gray-700 text-black dark:text-white"
+                      disabled={!isConfigured || isSubmitting}
                     />
                   ) : (
                     <input
@@ -151,15 +154,16 @@ const Contact = ({ title, formFields }: ContactProps) => {
                       name={field.name}
                       required={field.required}
                       className="mt-1 py-3 px-4 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-black dark:focus:border-white focus:ring-black dark:focus:ring-white bg-gray-50 dark:bg-gray-700 text-black dark:text-white"
+                      disabled={!isConfigured || isSubmitting}
                     />
                   )}
                 </div>
               ))}
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={!isConfigured || isSubmitting}
                 className={`w-full bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 ease-in-out ${
-                  isSubmitting 
+                  !isConfigured || isSubmitting 
                     ? 'opacity-70 cursor-not-allowed' 
                     : 'hover:bg-gray-800 dark:hover:bg-gray-200'
                 }`}
