@@ -5,7 +5,7 @@
     "title": "Software Engineer",
     "tagline": "Software developer exploring the intersection of code, AI, and finance to build meaningful digital solutions",
     "email": "sidharthasunkasari96@gmail.com",
-    "profileImage": "/src/images/profile.jpeg"
+    "profileImage": "../../images/profile.jpeg"
   },
   "socialLinks": {
     "github": {
