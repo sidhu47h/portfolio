@@ -21,52 +21,10 @@ jobs:
           
       - name: Install dependencies
         run: npm ci
-        
-      - name: Check GitHub Secrets
-        id: check_secrets
-        run: |
-          # Check if secrets are defined and not empty
-          if [ -z "${{ secrets.VITE_EMAILJS_SERVICE_ID }}" ] || [ -z "${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}" ] || [ -z "${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}" ]; then
-            echo "::warning::One or more EmailJS secrets are missing or empty"
-            echo "missing_secrets=true" >> $GITHUB_OUTPUT
-          else
-            echo "All EmailJS secrets are defined"
-            echo "missing_secrets=false" >> $GITHUB_OUTPUT
-          fi
       
-      # Create a .env file with explicit fallback values to handle missing secrets
-      - name: Create .env file
-        run: |
-          echo "Creating .env file with available secrets"
-          # Use empty strings as fallbacks if secrets are not defined
-          cat > .env << EOL
-          VITE_EMAILJS_SERVICE_ID="${{ secrets.VITE_EMAILJS_SERVICE_ID || '' }}"
-          VITE_EMAILJS_TEMPLATE_ID="${{ secrets.VITE_EMAILJS_TEMPLATE_ID || '' }}"
-          VITE_EMAILJS_PUBLIC_KEY="${{ secrets.VITE_EMAILJS_PUBLIC_KEY || '' }}"
-          # Add a flag to indicate that secrets were missing during build
-          VITE_EMAILJS_CONFIG_MISSING=${{ steps.check_secrets.outputs.missing_secrets }}
-          EOL
-          
-      - name: Verify .env file content
-        run: |
-          # Count non-empty variables (exclude lines with ="")
-          NON_EMPTY_VARS=$(grep -v '=""' .env | grep -c VITE_ || echo "0")
-          echo "Number of non-empty env variables: $NON_EMPTY_VARS"
-          echo "Environment variables status: $([ "$NON_EMPTY_VARS" -ge 3 ] && echo 'Complete' || echo 'Incomplete')"
-          
-          # Display warning if secrets are missing
-          if [ "${{ steps.check_secrets.outputs.missing_secrets }}" == "true" ]; then
-            echo "::warning::Building with missing EmailJS configuration. Contact form will be disabled."
-          fi
-      
-      # Build with environment variables directly passed
+      # Simple build with no environment variables needed
       - name: Build
         run: npm run build
-        env:
-          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID || '' }}
-          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID || '' }}
-          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY || '' }}
-          VITE_EMAILJS_CONFIG_MISSING: ${{ steps.check_secrets.outputs.missing_secrets }}
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
