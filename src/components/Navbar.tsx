@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaSun, FaMoon, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa';
 import portfolioData from '../data/portfolio.json';
 import type { PortfolioData } from '../types/portfolio';
 
@@ -58,8 +58,16 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+  const handleDownloadResume = () => {
+    // Get the base URL of the site
+    const baseURL = window.location.origin;
+    // Open the PDF file in a new tab, accounting for the base path in vite.config.ts
+    window.open(`${baseURL}/portfolio/Sidhartha_resume_2025.pdf`, '_blank');
+    
+    // Close the mobile menu if it's open
+    if (isOpen) {
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -88,15 +96,13 @@ const Navbar = () => {
 
             {/* Right side icons */}
             <div className="hidden md:flex items-center space-x-4">
-              <button 
-                onClick={toggleDarkMode}
-                className="transition-all duration-300 transform hover:scale-110"
-                aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              <button
+                onClick={handleDownloadResume}
+                className="transition-all duration-300 transform hover:scale-110 flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+                aria-label="Download Resume"
               >
-                {isDarkMode ? 
-                  <FaSun className="w-6 h-6 text-white" /> : 
-                  <FaMoon className="w-6 h-6 text-white" />
-                }
+                <FaDownload className="w-4 h-4" />
+                <span>Resume</span>
               </button>
               <a
                 href={data.socialLinks.github.url}
@@ -128,6 +134,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="focus:outline-none"
                 aria-label="Menu"
+                style={{ color: isDarkMode ? 'white' : 'black' }}
               >
                 {isOpen ? (
                   <svg
@@ -138,7 +145,7 @@ const Navbar = () => {
                   >
                     <path
                       d="M6 18L18 6M6 6l12 12"
-                      stroke={isDarkMode ? "white" : "black"}
+                      stroke="white"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -146,14 +153,14 @@ const Navbar = () => {
                   </svg>
                 ) : (
                   <svg
-                    className="h-7 w-7 text-black dark:text-white"
+                    className="h-7 w-7"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M4 6h16M4 12h16M4 18h16"
-                      stroke={isDarkMode ? "white" : "black"}
+                      stroke="white"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -188,28 +195,28 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300 text-lg font-medium no-underline"
+                  className="hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300 text-lg font-medium no-underline"
+                  style={{ color: isDarkMode ? 'white' : 'black' }}
                 >
                   {link.name}
                 </a>
               ))}
+              <button
+                onClick={handleDownloadResume}
+                className="flex items-center space-x-2 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300 text-lg font-medium text-left"
+                style={{ color: 'white'}}
+              >
+                <FaDownload className="w-5 h-5" style={{ color: 'inherit' }} />
+                <span>Download Resume</span>
+              </button>
             </div>
             <div className="flex space-x-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-              <button 
-                onClick={toggleDarkMode}
-                className="transition-all duration-300 transform hover:scale-110"
-                aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                {isDarkMode ? 
-                  <FaSun className="w-6 h-6 text-white" /> : 
-                  <FaMoon className="w-6 h-6 text-white" />
-                }
-              </button>
               <a
                 href={data.socialLinks.github.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300"
+                className="transition-all duration-300"
+                style={{ color: isDarkMode ? 'white' : 'black' }}
               >
                 <FaGithub className="w-6 h-6" />
               </a>
@@ -217,7 +224,8 @@ const Navbar = () => {
                 href={data.socialLinks.linkedin.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300"
+                className="transition-all duration-300"
+                style={{ color: isDarkMode ? 'white' : 'black' }}
               >
                 <FaLinkedin className="w-6 h-6" />
               </a>
