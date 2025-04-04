@@ -9,6 +9,7 @@ import Contact from './Contact';
 import Skills from './Skills';
 import About from './About';
 import { useState, useEffect } from 'react';
+import profileImage from '../images/profile.jpeg';
 
 const Home = () => {
   const data: PortfolioData = portfolioData;
@@ -85,7 +86,7 @@ const Home = () => {
             transition={{ duration: 0.3 }}
           >
             <motion.img
-              src={data.personalInfo.profileImage}
+              src={profileImage}
               alt="Profile"
               className="w-full h-full object-cover"
               style={{ transform: 'scale(1.3)' }}

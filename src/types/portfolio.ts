@@ -4,7 +4,6 @@ export interface PersonalInfo {
   title: string;
   tagline: string;
   email: string;
-  profileImage: string;
 }
 
 export interface SocialLink {
