@@ -55,24 +55,57 @@ interface ExperienceProps {
 
 const Experience = ({ title, positions }: ExperienceProps) => {
   return (
-    <section id="experience" className="w-full py-20 dark:bg-[#121212] transition-colors">
+    <section id="experience" className="w-full py-20 transition-colors">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 text-black dark:text-white"
+          className="text-4xl font-bold text-center mb-12 text-black"
         >
           {title}
         </motion.h2>
-        <div className="space-y-6">
-          {positions.map((position, index) => (
-            <ExperienceCard
-              key={`${position.company}-${position.period}`}
-              position={position}
-              index={index}
-            />
+        <div className="grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+          {positions.map((position) => (
+            <motion.div
+              key={position.company}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="mb-4">
+                <h3 className="text-2xl font-bold text-blue-600">{position.company}</h3>
+                <p className="text-lg text-black mt-1">{position.role}</p>
+              </div>
+              <div className="mb-4">
+                <p className="text-gray-600">{position.period}</p>
+                <p className="text-gray-600">{position.location}</p>
+              </div>
+              <div className="mb-4">
+                <h4 className="text-lg font-semibold text-black mb-2">Responsibilities:</h4>
+                <ul className="list-disc list-inside space-y-1 text-gray-600">
+                  {position.responsibilities.map((responsibility, index) => (
+                    <li key={index}>{responsibility}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold text-black mb-2">Tech Stack:</h4>
+                <div className="flex flex-wrap gap-2">
+                  {position.techStack.map((tech) => (
+                    <span 
+                      key={tech}
+                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -41,11 +41,11 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-5"
           >
-            <span className="text-black dark:text-white">Hi, I'm </span>
+            <span className="text-black">Hi, I'm </span>
             <span className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-transparent bg-clip-text whitespace-nowrap">{data.personalInfo.name}</span>
           </motion.h1>
           <div className="relative">
-            <div className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 md:mb-8 pr-4" style={{ lineHeight: '1.5' }}>
+            <div className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 md:mb-8 pr-4" style={{ lineHeight: '1.5' }}>
               {displayedText}
               <motion.span
                 animate={{ opacity: [1, 0] }}
@@ -54,7 +54,7 @@ const Home = () => {
                   repeat: Infinity,
                   repeatType: "reverse"
                 }}
-                className="text-black dark:text-white ml-[1px] text-2xl"
+                className="text-black ml-[1px] text-2xl"
               >
                 |
               </motion.span>
@@ -66,10 +66,10 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-wrap gap-4 pt-3"
           >
-            <a href="#projects" className="bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 transform hover:scale-110 ease-in-out hover:text-white dark:hover:text-black">
+            <a href="#projects" className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-110 ease-in-out hover:text-white">
               View My Work
             </a>
-            <a href="#contact" className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-110 ease-in-out hover:text-white">
+            <a href="#contact" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-110 ease-in-out hover:text-white">
               Get In Touch
             </a>
           </motion.div>

@@ -6,45 +6,6 @@ import type { PortfolioData } from '../types/portfolio';
 const Navbar = () => {
   const data: PortfolioData = portfolioData;
   const [isOpen, setIsOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check if user has a saved preference
-    const savedTheme = localStorage.getItem('theme');
-    // Check if system prefers dark mode
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    return savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
-  });
-
-  useEffect(() => {
-    // Apply the theme when component mounts and when isDarkMode changes
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
-
-  // Initialize theme on component mount
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    // Apply initial theme
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    }
-
-    // Handle system theme changes
-    const handleChange = () => {
-      if (!localStorage.getItem('theme')) {
-        setIsDarkMode(mediaQuery.matches);
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
 
   // Add effect to handle body scroll when menu is open
   useEffect(() => {
@@ -72,11 +33,11 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed w-full z-50 py-4 ${isDarkMode ? 'bg-[#121212]' : 'bg-white'}`}>
+      <nav className="fixed w-full z-50 py-4 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <a href="/" className="text-2xl md:text-3xl font-bold text-black dark:text-white no-underline tracking-tight">
+              <a href="/" className="text-2xl md:text-3xl font-bold text-black no-underline tracking-tight">
                 {data.personalInfo.logoName}
               </a>
             </div>
@@ -87,7 +48,7 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300 transform hover:scale-110 text-base font-medium no-underline"
+                  className="text-black hover:text-gray-600 transition-all duration-300 transform hover:scale-110 text-base font-medium no-underline"
                 >
                   {link.name}
                 </a>
@@ -96,11 +57,11 @@ const Navbar = () => {
 
             {/* Right side icons */}
             <div className="hidden md:flex items-center space-x-4">
-            <a
+              <a
                 href={data.socialLinks.github.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300 transform hover:scale-110"
+                className="text-black hover:text-gray-600 transition-all duration-300 transform hover:scale-110"
               >
                 <FaGithub className="w-6 h-6" />
               </a>
@@ -108,7 +69,7 @@ const Navbar = () => {
                 href={data.socialLinks.linkedin.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300 transform hover:scale-110"
+                className="text-black hover:text-gray-600 transition-all duration-300 transform hover:scale-110"
               >
                 <FaLinkedin className="w-6 h-6" />
               </a>
@@ -122,7 +83,7 @@ const Navbar = () => {
               </button>
               <a
                 href="#contact"
-                className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 no-underline hover:text-white dark:hover:text-black"
+                className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 no-underline hover:text-white"
               >
                 Contact Me
               </a>
@@ -134,7 +95,6 @@ const Navbar = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="focus:outline-none"
                 aria-label="Menu"
-                style={{ color: isDarkMode ? 'white' : 'black' }}
               >
                 {isOpen ? (
                   <svg
@@ -145,7 +105,7 @@ const Navbar = () => {
                   >
                     <path
                       d="M6 18L18 6M6 6l12 12"
-                      stroke="white"
+                      stroke="black"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -160,7 +120,7 @@ const Navbar = () => {
                   >
                     <path
                       d="M4 6h16M4 12h16M4 18h16"
-                      stroke="white"
+                      stroke="black"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -181,9 +141,7 @@ const Navbar = () => {
         onClick={() => setIsOpen(false)}
       >
         <div 
-          className={`absolute top-0 right-0 h-full w-64 ${
-            isDarkMode ? 'bg-[#121212]' : 'bg-white'
-          } shadow-xl transform transition-transform duration-300 ease-in-out ${
+          className={`absolute top-0 right-0 h-full w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
             isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
           onClick={(e) => e.stopPropagation()}
@@ -195,28 +153,25 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300 text-lg font-medium no-underline"
-                  style={{ color: isDarkMode ? 'white' : 'black' }}
+                  className="text-black hover:text-gray-600 transition-all duration-300 text-lg font-medium no-underline"
                 >
                   {link.name}
                 </a>
               ))}
               <button
                 onClick={handleDownloadResume}
-                className="flex items-center space-x-2 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300 text-lg font-medium text-left"
-                style={{ color: 'white'}}
+                className="flex items-center space-x-2 text-black hover:text-gray-600 transition-all duration-300 text-lg font-medium text-left"
               >
-                <FaDownload className="w-5 h-5" style={{ color: 'inherit' }} />
+                <FaDownload className="w-5 h-5" />
                 <span>Download Resume</span>
               </button>
             </div>
-            <div className="flex space-x-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex space-x-6 pt-6 border-t border-gray-200">
               <a
                 href={data.socialLinks.github.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-300"
-                style={{ color: isDarkMode ? 'white' : 'black' }}
+                className="text-black transition-all duration-300"
               >
                 <FaGithub className="w-6 h-6" />
               </a>
@@ -224,8 +179,7 @@ const Navbar = () => {
                 href={data.socialLinks.linkedin.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-300"
-                style={{ color: isDarkMode ? 'white' : 'black' }}
+                className="text-black transition-all duration-300"
               >
                 <FaLinkedin className="w-6 h-6" />
               </a>

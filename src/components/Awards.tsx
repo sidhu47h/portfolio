@@ -31,24 +31,35 @@ interface AwardsSectionProps {
 
 const Awards = ({ title, list }: AwardsSectionProps) => {
   return (
-    <section id="awards" className="w-full py-20 dark:bg-[#121212] transition-colors">
+    <section id="awards" className="w-full py-20 transition-colors">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 text-black dark:text-white"
+          className="text-4xl font-bold text-center mb-12 text-black"
         >
           {title}
         </motion.h2>
-        <div className="space-y-6">
-          {list.map((award, index) => (
-            <AwardCard
-              key={`${award.title}-${award.organization}-${index}`}
-              award={award}
-              index={index}
-            />
+        <div className="grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+          {list.map((award) => (
+            <motion.div
+              key={award.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-blue-600">{award.title}</h3>
+                <p className="text-lg text-black mt-1">{award.organization}</p>
+              </div>
+              <div className="mb-4">
+                <p className="text-gray-600">{award.description}</p>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

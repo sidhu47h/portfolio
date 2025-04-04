@@ -95,14 +95,14 @@ const Contact = ({ title, formFields }: ContactProps) => {
   };
 
   return (
-    <section id="contact" className="w-full py-20 bg-gray-50 dark:bg-[#121212] transition-colors">
+    <section id="contact" className="w-full py-20 bg-gray-50 transition-colors">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 text-black dark:text-white"
+          className="text-4xl font-bold text-center mb-12 text-black"
         >
           {title}
         </motion.h2>
@@ -112,10 +112,10 @@ const Contact = ({ title, formFields }: ContactProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg p-8"
+            className="bg-gray-100 rounded-lg shadow-lg p-8"
           >
             {!isConfigured && (
-              <div className="mb-6 p-4 rounded-md bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100">
+              <div className="mb-6 p-4 rounded-md bg-yellow-100 text-yellow-800">
                 Contact form is currently unavailable. Please reach out via email directly.
               </div>
             )}
@@ -124,8 +124,8 @@ const Contact = ({ title, formFields }: ContactProps) => {
               <div 
                 className={`mb-6 p-4 rounded-md ${
                   submitStatus.success 
-                    ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100' 
-                    : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100'
+                    ? 'bg-green-100 text-green-800' 
+                    : 'bg-red-100 text-red-800'
                 }`}
               >
                 {submitStatus.message}
@@ -135,7 +135,7 @@ const Contact = ({ title, formFields }: ContactProps) => {
             <form ref={form} onSubmit={sendEmail} className="space-y-6">
               {formFields.map((field) => (
                 <div key={field.name}>
-                  <label htmlFor={field.name} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor={field.name} className="block text-sm font-medium text-gray-700">
                     {field.label}
                   </label>
                   {field.type === 'textarea' ? (
@@ -144,7 +144,7 @@ const Contact = ({ title, formFields }: ContactProps) => {
                       name={field.name}
                       rows={4}
                       required={field.required}
-                      className="mt-1 py-3 px-4 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-black dark:focus:border-white focus:ring-black dark:focus:ring-white bg-gray-50 dark:bg-gray-700 text-black dark:text-white"
+                      className="mt-1 py-3 px-4 block w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black bg-gray-50 text-black"
                       disabled={!isConfigured || isSubmitting}
                     />
                   ) : (
@@ -153,7 +153,7 @@ const Contact = ({ title, formFields }: ContactProps) => {
                       id={field.name}
                       name={field.name}
                       required={field.required}
-                      className="mt-1 py-3 px-4 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-black dark:focus:border-white focus:ring-black dark:focus:ring-white bg-gray-50 dark:bg-gray-700 text-black dark:text-white"
+                      className="mt-1 py-3 px-4 block w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black bg-gray-50 text-black"
                       disabled={!isConfigured || isSubmitting}
                     />
                   )}
@@ -162,10 +162,10 @@ const Contact = ({ title, formFields }: ContactProps) => {
               <button
                 type="submit"
                 disabled={!isConfigured || isSubmitting}
-                className={`w-full bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 ease-in-out ${
+                className={`w-full bg-black text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 ease-in-out ${
                   !isConfigured || isSubmitting 
                     ? 'opacity-70 cursor-not-allowed' 
-                    : 'hover:bg-gray-800 dark:hover:bg-gray-200'
+                    : 'hover:bg-gray-800'
                 }`}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
