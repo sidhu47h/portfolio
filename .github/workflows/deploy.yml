@@ -24,15 +24,15 @@ jobs:
         
       - name: Create env file
         run: |
-          echo "VITE_EMAILJS_SERVICE_ID=${{ secrets.VITE_EMAILJS_SERVICE_ID }}" > .env
-          echo "VITE_EMAILJS_TEMPLATE_ID=${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}" >> .env
-          echo "VITE_EMAILJS_PUBLIC_KEY=${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}" >> .env
+          echo "VITE_EMAILJS_SERVICE_ID=${{ vars.VITE_EMAILJS_SERVICE_ID || secrets.VITE_EMAILJS_SERVICE_ID }}" > .env
+          echo "VITE_EMAILJS_TEMPLATE_ID=${{ vars.VITE_EMAILJS_TEMPLATE_ID || secrets.VITE_EMAILJS_TEMPLATE_ID }}" >> .env
+          echo "VITE_EMAILJS_PUBLIC_KEY=${{ vars.VITE_EMAILJS_PUBLIC_KEY || secrets.VITE_EMAILJS_PUBLIC_KEY }}" >> .env
       
       - name: Debug Environment (Safely)
         run: |
-          echo "Service ID configured? $([ -n \"${{ secrets.VITE_EMAILJS_SERVICE_ID }}\" ] && echo 'Yes' || echo 'No')"
-          echo "Template ID configured? $([ -n \"${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}\" ] && echo 'Yes' || echo 'No')"
-          echo "Public Key configured? $([ -n \"${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}\" ] && echo 'Yes' || echo 'No')"
+          echo "Service ID configured? $([ -n \"${{ vars.VITE_EMAILJS_SERVICE_ID || secrets.VITE_EMAILJS_SERVICE_ID }}\" ] && echo 'Yes' || echo 'No')"
+          echo "Template ID configured? $([ -n \"${{ vars.VITE_EMAILJS_TEMPLATE_ID || secrets.VITE_EMAILJS_TEMPLATE_ID }}\" ] && echo 'Yes' || echo 'No')"
+          echo "Public Key configured? $([ -n \"${{ vars.VITE_EMAILJS_PUBLIC_KEY || secrets.VITE_EMAILJS_PUBLIC_KEY }}\" ] && echo 'Yes' || echo 'No')"
       
       - name: Build
         run: npm run build
