@@ -3,7 +3,7 @@
     "logoName": "Sid",
     "name": "Sidhartha Sunkasari",
     "title": "Software Engineer",
-    "tagline": "Software Developer specializing in building exceptional digital experiences",
+    "tagline": "Software developer exploring the intersection of code, AI, and finance to build meaningful digital solutions",
     "email": "sidharthasunkasari96@gmail.com",
     "profileImage": "/src/images/profile.jpeg"
   },
@@ -23,7 +23,7 @@
   },
   "about": {
     "title": "About Me",
-    "description": "I'm a passionate software developer with expertise in building modern web applications. With over 5 years of experience, I've worked on a variety of projects ranging from small business websites to large enterprise applications.",
+    "description": "I’m an experienced Software Engineer with a Master’s degree in Computer Science and 2 years of experience at Amazon, where I honed my skills in designing and maintaining large-scale distributed systems and end-to-end microservices. I’m passionate about harnessing cloud computing, AWS, Test Driven Development (TDD), CI/CD, and configuration-driven UI to craft scalable and robust solutions. Beyond this, I’m deeply interested in AI—particularly machine learning and data-driven innovations—and finance, where I’m drawn to fintech advancements and financial system optimization. I’m eager to tackle challenging software engineering opportunities where I can fuse my technical skills with my enthusiasm for AI and finance to drive impactful innovation and growth.",
     "details": {
       "experience": [
         {
@@ -233,38 +233,58 @@
         ]
       }
     ]
-  },
+  }, 
   "projects": {
     "title": "Featured Projects",
     "list": [
       {
-        "title": "Portfolio Website",
-        "description": "A modern, responsive portfolio website built with React and Tailwind CSS.",
-        "image": "/images/portfolio.jpg",
-        "technologies": ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        "title": "AI-Powered Tailored Resume Generator using OpenAI Models",
+        "description": "Built a responsive web app using React and Flask, integrated with OpenAI's API for automated resume creation. Generated tailored, ATS-optimized resumes in LaTeX format by analyzing provided job descriptions using GPT models. Reduced resume creation time significantly by automating personalization and formatting tasks. Managed backend API calls effectively, ensuring reliable and fast interactions with OpenAI. Incorporated responsive design principles with React, ensuring seamless cross-device compatibility and improving user accessibility.",
+        "image": null,
+        "technologies": ["Flask", "Python", "OpenAI", "React", "Prompt Engineering"],
         "links": {
-          "github": "https://github.com/yourusername/portfolio",
-          "live": "https://yourportfolio.com"
+          "github": "https://github.com/sidhu47h/TAILORED-RESUME-GENERATOR",
+          "live": null
         }
       },
       {
-        "title": "E-commerce Platform",
-        "description": "A full-stack e-commerce platform with user authentication and payment processing.",
-        "image": "/images/ecommerce.jpg",
-        "technologies": ["Node.js", "Express", "MongoDB", "React", "Redux"],
+        "title": "Interactive Textbook Generator",
+        "description": "Developed a dynamic, interactive learning platform using React and FastAPI, integrating OpenAI's API to generate high-quality, modular educational content. Established a scalable cloud architecture with AWS S3 for static content storage and a lightweight metadata database to manage course materials efficiently. Integrated interactive elements such as clickable navigation, code examples, and data visualizations to improve user engagement and learning outcomes.",
+        "image": null,
+        "technologies": ["Python", "OpenAI", "AWS S3", "MongoDB"],
         "links": {
-          "github": "https://github.com/yourusername/ecommerce",
-          "live": "https://ecommerce-demo.com"
+          "github": "https://github.com/sidhu47h/Alldocs",
+          "live": null
         }
       },
       {
-        "title": "Task Management App",
-        "description": "A collaborative task management application with real-time updates.",
-        "image": "/images/task-manager.jpg",
-        "technologies": ["React", "Firebase", "Material UI", "Redux"],
+        "title": "Projecting Annotations for NER using BERT Transformer",
+        "description": "Fine-tuned a BERT Transformer model for Named Entity Recognition (NER) tasks using Python and Huggingface Transformers. Annotated and evaluated entities within the CoNLLpp dataset, improving model accuracy through transformer-based techniques. Designed a scalable framework enabling NER annotation capabilities for low-resource languages. Enhanced entity recognition precision by leveraging advanced NLP methods with transformer architectures.",
+        "image": null,
+        "technologies": ["Python", "Huggingface", "Transformers"],
         "links": {
-          "github": "https://github.com/yourusername/task-manager",
-          "live": "https://task-manager-demo.com"
+          "github": null,
+          "live": "https://huggingface.co/sidhu47h/bert-conllp-nlp-project"
+        }
+      },
+      {
+        "title": "Interactive Dashboard on West Virginia Drug Epidemic",
+        "description": "Developed interactive dashboards using React, Observable Framework, and D3.js to analyze the West Virginia drug crisis. Visualized correlations between socio-economic indicators and drug overdose rates at the county level. Leveraged Observable Plot for intuitive, data-driven visual storytelling to enhance public understanding. Enabled interactive exploration of regional drug abuse patterns through dynamic charts and choropleth maps.",
+        "image": null,
+        "technologies": ["React", "Observable Framework", "Observable Plot", "D3.js"],
+        "links": {
+          "github": null,
+          "live": "https://sidhu-sidhartha.observablehq.cloud/test/drug-class-analysis-final"
+        }
+      },
+      {
+        "title": "Interactive Quiz Generator with Automated Parsing",
+        "description": "Developed a web-based quiz application enabling teachers to upload quizzes in plain text format, automatically parsed into interactive quizzes. Implemented customizable quiz features, allowing users to select quiz length, duration, and timer settings. Built the frontend using React, and managed backend quiz parsing and data handling with Spring Boot. Improved usability for educators by automating quiz creation and reducing manual formatting efforts.",
+        "image": null,
+        "technologies": ["Spring Boot", "React", "Java 17", "AWS S3"],
+        "links": {
+          "github": "https://github.com/sidhu47h/QuizAppReact",
+          "live": null
         }
       }
     ]
@@ -320,31 +340,61 @@
   "experience": {
     "title": "Work Experience",
     "positions": [
-      {
-        "company": "Company Name 1",
-        "role": "Senior Software Developer",
-        "period": "Jan 2022 - Present",
-        "location": "City, Country",
+    {
+        "company": "Amazon",
+        "role": "Software Development Engineer",
+        "period": "Nov 2021 - Jul 2023",
+        "location": "Hyderabad, Telangana, India",
         "responsibilities": [
-          "Led a team of 5 developers in developing and maintaining multiple web applications",
-          "Implemented microservices architecture resulting in 40% improved system performance",
-          "Mentored junior developers and conducted code reviews to ensure code quality",
-          "Collaborated with product managers to define technical requirements and project timelines"
+          "Implemented a system that aims at recovering $50M in bad debt by analyzing customer risk factors.",
+          "Implemented a new data model that scaled items return capacity from 1,000 to 1 million in a single return contract.",
+          "Reduced API latency by 50% through plugin migration to support a new data model for improved performance while ensuring backward compatibility.",
+          "Designed and implemented rule based configurations and systems for rendering UI widgets based on different sub pages and their context.",
+          "Ensured system stability during peak traffic with optimized resource allocation by load testing and scaling the infrastructure accordingly.",
+          "Developed multi-tier return reason questionnaires for softline products in the EU region.",
+          "Created return reason questionnaires for softline products in the European region using Hierarchical Database.",
+          "Led operational excellence initiatives, driving process automation and implementing industry best practices to optimize team workflows.",
+          "Built products that perform, scale, are highly available and fault tolerant with automated failover capabilities.",
+          "Actively participated in all phases of software engineering including design, development, testing, and production release in an Agile environment.",
+          "Participated in frequent On-call operations by continuously monitoring the systems and implementing the incident response actions."],
+        "techStack": ["Java", "Spring Boot", "Scala", "React", "Elastic Search", "Kibana", "Hierarchical Databases"]
+      },  
+      {
+        "company": "Software Engineer",
+        "role": "Software Engineer",
+        "period": "Feb 2025 - Present",
+        "location": "Remote",
+        "responsibilities": [
+          "Developed supply chain management system for a creating scalable blueprints for the supply chain",
+          "Implemented a data pipeline to extract, transform, and load data from various sources into a centralized data store",
+          "Developed a dashboard to visualize the supply chain data and track the status of the supply chain"
         ],
         "techStack": ["React", "Node.js", "TypeScript", "AWS", "Docker", "MongoDB"]
       },
       {
-        "company": "Company Name 2",
-        "role": "Software Developer",
-        "period": "Jun 2020 - Dec 2021",
-        "location": "City, Country",
+        "company": "West Virginia University - Industrial Assesstment Center",
+        "role": "Software Engineer (Graduate Research Assistantship)",
+        "period": "Jan 2024 - Dec 2024",
+        "location": "Morgantown, West Virginia, USA",
         "responsibilities": [
-          "Developed and maintained frontend applications using React and TypeScript",
-          "Implemented responsive designs and ensured cross-browser compatibility",
-          "Integrated third-party APIs and services into existing applications",
-          "Participated in agile ceremonies and contributed to sprint planning"
+          "Created dashboards with Python, Observable for data visualization, enhancing decision-making.",
+          "Built backend/frontend systems for data collection, improving efficiency and accuracy.",
+          "Conducted industrial assessment visits to evaluate energy efficiency, analyze data from industrial equipment, and provide energy optimization recommendations.",
+          "Created local virtualizations to support the legacy softwares required to analyze the industrial imaging data.",
+          "Managed and maintained IAC websites, ensuring functionality, user-friendliness, and timely updates to support industrial assessment operations.",
+          "Provided IT support for troubleshooting and maintaining infrastructure to ensure compatibility of legacy software."
         ],
-        "techStack": ["React", "JavaScript", "HTML/CSS", "Git", "REST APIs"]
+        "techStack": [ "Java", "Python", "React", "Word", "HOBO", "Excel", "VMs"]
+      },
+      {
+        "company": "West Virginia University",
+        "role": "Instructor (Graduate Teaching Assistantship)",
+        "period": "Aug 2023 - Dec 2023",
+        "location": "Morgantown, West Virginia, USA",
+        "responsibilities": [
+          "Taught CS101 (Introductory course in Data Analysis) to undergraduate students as part of a Graduate Teaching Assistantship."
+        ],
+        "techStack": [ "Microsoft Word", "Excel", "Microsoft Access", "PowerPoint"]
       }
     ]
   },
@@ -353,41 +403,31 @@
     "degrees": [
       {
         "degree": "Master of Science in Computer Science",
-        "institution": "University Name",
-        "location": "City, Country",
-        "period": "2018 - 2020",
+        "institution": "West Virginia University",
+        "location": "Morgantown, West Virginia, USA",
+        "period": "2023 - 2024",
         "gpa": "3.8/4.0",
-        "highlights": [
-          "Specialized in Machine Learning and Artificial Intelligence",
-          "Published research paper on Deep Learning applications",
-          "Teaching Assistant for Data Structures and Algorithms",
-          "Member of Computer Science Honor Society"
-        ],
         "relevantCourses": [
-          "Advanced Algorithms",
-          "Machine Learning",
-          "Distributed Systems",
-          "Cloud Computing",
-          "Software Engineering"
+          "Pattern Recognition",
+          "Deep Learning",
+          "LLMs",
+          "Responsible AI",
+          "Software Engineering",
+          "Cybersecurity",
+          "Big Data"
         ]
       },
       {
-        "degree": "Bachelor of Technology in Computer Science",
-        "institution": "University Name",
-        "location": "City, Country",
+        "degree": "Bachelor of Technology in Computer Science + MBA in Marketing",
+        "institution": "Jawaharlal Nehru Technological University",
+        "location": "Hyderabad, Telangana, India",
         "period": "2014 - 2018",
-        "gpa": "3.9/4.0",
-        "highlights": [
-          "Graduated with First Class Honors",
-          "Led the University Coding Club",
-          "Won first place in National Coding Competition",
-          "Completed capstone project on Web Technologies"
-        ],
         "relevantCourses": [
-          "Data Structures",
+          "Advanced Data Structures & Algorithms",
           "Object-Oriented Programming",
-          "Database Management",
-          "Web Development",
+          "Software Design Patterns",
+          "Database Management & Design",
+          "Operating Systems",
           "Computer Networks"
         ]
       }
@@ -397,22 +437,28 @@
     "title": "Awards & Achievements",
     "list": [
       {
-        "title": "Outstanding Technical Innovation Award",
-        "organization": "Tech Conference 2023",
-        "date": "November 2023",
-        "description": "Recognized for developing an innovative AI-powered solution that improved system efficiency by 60%."
+        "title": "Individual Participation in NCL Competition",
+        "organization": "Cyber Skyline",
+        "date": "Not Specified",
+        "description": "Competed individually in Cyber Skyline's NCL, applying skills in cryptography, OSINT, log analysis, and vulnerability assessment to solve cybersecurity challenges."
       },
       {
-        "title": "Best Open Source Contribution",
-        "organization": "GitHub Community Awards",
-        "date": "June 2023",
-        "description": "Awarded for significant contributions to open-source projects and active participation in the developer community."
+        "title": "Team-Based NCL Competition",
+        "organization": "Cyber Skyline",
+        "date": "Not Specified",
+        "description": "Collaborated effectively in team-based NCL competitions, analyzing threats, identifying vulnerabilities, and implementing cybersecurity strategies in simulated environments."
       },
       {
-        "title": "Excellence in Leadership",
-        "organization": "Company Name",
-        "date": "December 2022",
-        "description": "Recognized for exceptional leadership in driving team success and mentoring junior developers."
+        "title": "Leetcode Problem Solving Milestone",
+        "organization": "Leetcode",
+        "date": "Not Specified",
+        "description": "Solved 250+ problems on Leetcode. Handle: sidhu47."
+      },
+      {
+        "title": "Contribution to Code Poetry Competition",
+        "organization": "JNTU",
+        "date": "Not Specified",
+        "description": "Coordinated and created problem sets for the annual programming competition of JNTU 'Code Poetry'."
       }
     ]
   }

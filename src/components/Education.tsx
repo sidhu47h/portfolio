@@ -22,16 +22,8 @@ const EducationCard = ({ degree, index }: EducationCardProps) => (
       <div className="text-right mt-2 md:mt-0">
         <p className="text-gray-600 dark:text-gray-300">{degree.period}</p>
         <p className="text-gray-600 dark:text-gray-300">{degree.location}</p>
-        <p className="text-gray-600 dark:text-gray-300">GPA: {degree.gpa}</p>
+        {degree.gpa && <p className="text-gray-600 dark:text-gray-300">GPA: {degree.gpa}</p>}
       </div>
-    </div>
-    <div className="mb-4">
-      <h4 className="text-lg font-semibold text-black dark:text-white mb-2">Highlights:</h4>
-      <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300">
-        {degree.highlights.map((highlight, idx) => (
-          <li key={idx}>{highlight}</li>
-        ))}
-      </ul>
     </div>
     <div>
       <h4 className="text-lg font-semibold text-black dark:text-white mb-2">Relevant Courses:</h4>
