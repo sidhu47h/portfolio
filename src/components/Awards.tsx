@@ -19,9 +19,6 @@ const AwardCard = ({ award, index }: AwardCardProps) => (
         <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">{award.title}</h3>
         <p className="text-lg text-black dark:text-white mt-1">{award.organization}</p>
       </div>
-      {award.date && award.date.trim() !== "" && (
-        <p className="text-gray-600 dark:text-gray-300 mt-2 md:mt-0">{award.date}</p>
-      )}
     </div>
     <p className="text-gray-600 dark:text-gray-300">{award.description}</p>
   </motion.div>

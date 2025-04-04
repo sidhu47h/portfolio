@@ -27,7 +27,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => (
         >
           {project.title}
         </motion.h3>
-        <p className="text-lg text-black dark:text-white mt-1">{project.description}</p>
+        <p className="text-sm sm:text-base text-black dark:text-white mt-3 mb-4 px-1 py-1 text-justify">{project.description}</p>
       </div>
       <div className="flex gap-4 mt-4 md:mt-0">
         <motion.a

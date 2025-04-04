@@ -94,7 +94,7 @@ const Navbar = () => {
                 aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               >
                 {isDarkMode ? 
-                  <FaSun className="w-6 h-6 text-black" /> : 
+                  <FaSun className="w-6 h-6 text-white" /> : 
                   <FaMoon className="w-6 h-6 text-white" />
                 }
               </button>
@@ -146,14 +146,14 @@ const Navbar = () => {
                   </svg>
                 ) : (
                   <svg
-                    className="h-7 w-7"
+                    className="h-7 w-7 text-black dark:text-white"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M4 6h16M4 12h16M4 18h16"
-                      stroke={isDarkMode ? "white" : "black"}
+                      stroke={isDarkMode ? "black" : "white"}
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -201,7 +201,7 @@ const Navbar = () => {
                 aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               >
                 {isDarkMode ? 
-                  <FaSun className="w-6 h-6 text-black" /> : 
+                  <FaSun className="w-6 h-6 text-white" /> : 
                   <FaMoon className="w-6 h-6 text-white" />
                 }
               </button>

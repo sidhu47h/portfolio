@@ -439,25 +439,21 @@
       {
         "title": "Individual Participation in NCL Competition",
         "organization": "Cyber Skyline",
-        "date": "Not Specified",
         "description": "Competed individually in Cyber Skyline's NCL, applying skills in cryptography, OSINT, log analysis, and vulnerability assessment to solve cybersecurity challenges."
       },
       {
         "title": "Team-Based NCL Competition",
         "organization": "Cyber Skyline",
-        "date": "Not Specified",
         "description": "Collaborated effectively in team-based NCL competitions, analyzing threats, identifying vulnerabilities, and implementing cybersecurity strategies in simulated environments."
       },
       {
         "title": "Leetcode Problem Solving Milestone",
         "organization": "Leetcode",
-        "date": "Not Specified",
         "description": "Solved 250+ problems on Leetcode. Handle: sidhu47."
       },
       {
         "title": "Contribution to Code Poetry Competition",
         "organization": "JNTU",
-        "date": "Not Specified",
         "description": "Coordinated and created problem sets for the annual programming competition of JNTU 'Code Poetry'."
       }
     ]

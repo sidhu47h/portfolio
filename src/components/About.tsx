@@ -24,7 +24,7 @@ const About = ({ title, description }: AboutProps) => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+          className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-6xl mx-auto text-justify"
         >
           {description}
         </motion.p>
