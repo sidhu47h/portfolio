@@ -153,7 +153,7 @@ const Navbar = () => {
                   >
                     <path
                       d="M4 6h16M4 12h16M4 18h16"
-                      stroke={isDarkMode ? "black" : "white"}
+                      stroke={isDarkMode ? "white" : "black"}
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"

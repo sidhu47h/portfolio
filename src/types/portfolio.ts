@@ -37,8 +37,8 @@ export interface Degree {
   institution: string;
   location: string;
   period: string;
-  gpa: string;
-  highlights: string[];
+  gpa?: string;
+  highlights?: string[];
   relevantCourses: string[];
 }
 
@@ -87,11 +87,11 @@ export interface ProjectLink {
 export interface Project {
   title: string;
   description: string;
-  image: string;
+  image: string | null;
   technologies: string[];
   links: {
-    github: string;
-    live: string;
+    github: string | null;
+    live: string | null;
   };
 }
 
@@ -125,7 +125,7 @@ export interface Navigation {
 export interface Award {
   title: string;
   organization: string;
-  date: string;
+  date?: string;
   description: string;
 }
 
