@@ -1,8 +1,15 @@
 export const emailJsConfig = {
   // For static hosting like GitHub Pages, environment variables must be
   // injected at build time, which the GitHub workflow does via .env
+  
+  // Service ID from EmailJS (from the integration tab in your EmailJS dashboard)
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
+  
+  // Template ID from EmailJS (from the email templates section)
   templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
+  
+  // Public Key from EmailJS (from API Keys in your account settings)
+  // Note: EmailJS only needs the public key for client-side integration, not a private key
   publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '',
 };
 
