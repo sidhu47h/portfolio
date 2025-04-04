@@ -18,11 +18,19 @@ const Contact = ({ title, formFields }: ContactProps) => {
 
   // Initialize EmailJS
   useEffect(() => {
+    // Debug: Log if environment variables are defined (without revealing their values)
+    console.log('EmailJS env vars defined?', {
+      serviceId: !!import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      templateId: !!import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      publicKey: !!import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    });
+    
     // Ensure EmailJS is initialized only once when the component mounts
     try {
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
       if (publicKey) {
         emailjs.init(publicKey);
+        console.log('EmailJS initialized successfully');
       } else {
         console.warn('EmailJS public key is not defined in environment variables');
       }
