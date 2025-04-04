@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState, useRef, FormEvent } from 'react';
+import { useState, useRef, FormEvent, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import type { Contact } from '../types/portfolio';
 
@@ -16,6 +16,21 @@ const Contact = ({ title, formFields }: ContactProps) => {
     message: string;
   } | null>(null);
 
+  // Initialize EmailJS
+  useEffect(() => {
+    // Ensure EmailJS is initialized only once when the component mounts
+    try {
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      if (publicKey) {
+        emailjs.init(publicKey);
+      } else {
+        console.warn('EmailJS public key is not defined in environment variables');
+      }
+    } catch (error) {
+      console.error('Failed to initialize EmailJS:', error);
+    }
+  }, []);
+
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
     
@@ -24,32 +39,55 @@ const Contact = ({ title, formFields }: ContactProps) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Replace these with your actual EmailJS service ID, template ID, and public key
-    // You'll get these when you sign up at https://www.emailjs.com/
-    emailjs.sendForm(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID as string,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string,
-      form.current,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
-    )
-      .then((result) => {
-        console.log('Email sent successfully:', result.text);
-        setSubmitStatus({
-          success: true,
-          message: 'Message sent successfully! I will get back to you soon.'
-        });
-        form.current?.reset();
-      })
-      .catch((error) => {
-        console.error('Failed to send email:', error.text);
-        setSubmitStatus({
-          success: false,
-          message: 'Failed to send message. Please try again or contact me directly.'
-        });
-      })
-      .finally(() => {
-        setIsSubmitting(false);
+    // Check if environment variables are defined
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS configuration is missing. Please check your environment variables.');
+      setSubmitStatus({
+        success: false,
+        message: 'Email service is not properly configured. Please contact me directly via email.'
       });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Safely attempt to send the email
+    try {
+      emailjs.sendForm(
+        serviceId,
+        templateId,
+        form.current,
+        publicKey
+      )
+        .then((result) => {
+          console.log('Email sent successfully:', result.text);
+          setSubmitStatus({
+            success: true,
+            message: 'Message sent successfully! I will get back to you soon.'
+          });
+          form.current?.reset();
+        })
+        .catch((error) => {
+          console.error('Failed to send email:', error);
+          setSubmitStatus({
+            success: false,
+            message: 'Failed to send message. Please try again or contact me directly.'
+          });
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
+    } catch (error) {
+      console.error('Exception while sending email:', error);
+      setSubmitStatus({
+        success: false,
+        message: 'An unexpected error occurred. Please try again later or contact me directly.'
+      });
+      setIsSubmitting(false);
+    }
   };
 
   return (
