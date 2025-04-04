@@ -105,7 +105,7 @@ const Navbar = () => {
                   >
                     <path
                       d="M6 18L18 6M6 6l12 12"
-                      stroke="black"
+                      stroke="white"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -120,7 +120,7 @@ const Navbar = () => {
                   >
                     <path
                       d="M4 6h16M4 12h16M4 18h16"
-                      stroke="black"
+                      stroke="white"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -160,7 +160,7 @@ const Navbar = () => {
               ))}
               <button
                 onClick={handleDownloadResume}
-                className="flex items-center space-x-2 text-black hover:text-gray-600 transition-all duration-300 text-lg font-medium text-left"
+                className="flex items-center space-x-2 text-white hover:text-gray-600 transition-all duration-300 text-lg font-medium text-left"
               >
                 <FaDownload className="w-5 h-5" />
                 <span>Download Resume</span>

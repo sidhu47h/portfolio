@@ -66,7 +66,7 @@ const Experience = ({ title, positions }: ExperienceProps) => {
         >
           {title}
         </motion.h2>
-        <div className="grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+        <div className="space-y-6">
           {positions.map((position) => (
             <motion.div
               key={position.company}
@@ -76,13 +76,15 @@ const Experience = ({ title, positions }: ExperienceProps) => {
               viewport={{ once: true }}
               className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
             >
-              <div className="mb-4">
-                <h3 className="text-2xl font-bold text-blue-600">{position.company}</h3>
-                <p className="text-lg text-black mt-1">{position.role}</p>
-              </div>
-              <div className="mb-4">
-                <p className="text-gray-600">{position.period}</p>
-                <p className="text-gray-600">{position.location}</p>
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-blue-600">{position.company}</h3>
+                  <p className="text-lg text-black mt-1">{position.role}</p>
+                </div>
+                <div className="text-left md:text-right mt-2 md:mt-0">
+                  <p className="text-gray-600">{position.period}</p>
+                  <p className="text-gray-600">{position.location}</p>
+                </div>
               </div>
               <div className="mb-4">
                 <h4 className="text-lg font-semibold text-black mb-2">Responsibilities:</h4>
